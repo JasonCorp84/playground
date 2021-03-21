@@ -1,11 +1,11 @@
 import './App.css';
-import Container from './components/Bars'
+import BarContainer from './components/Bars'
 
 function App() {
   return (
     <div className="App">
       <div className='App-container'>
-        <Container />
+        <BarContainer />
       </div>
     </div>
   );

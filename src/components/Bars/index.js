@@ -1,3 +1,3 @@
-import Container from './Container.jsx'
+import Container from './BarContainer.jsx'
 
 export default Container;
