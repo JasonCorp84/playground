@@ -6,19 +6,19 @@ import Bar from './Bar'
 const Container = styled.div`
   display: flex;
   width: 80%;
-  height: 90vh;
-  border: 1px solid pink;
+  height: 70vh;
 `
 
 const BarContainer = () => {
-  const [barListSize, setBarListSize] = useState(100);
+  const [barListSize, setBarListSize] = useState(30);
+  const [randomRange, setRandomRange] = useState(1000)
   const [barList, setBarList] = useState([]);
   const [minSize, setMinSize] = useState();
   const [maxSize, setMaxSize] = useState(Math.max(...barList));
 
   useEffect(() => {
     const barList = new Array(barListSize).fill(null);
-    barList.forEach((number, index) => barList[index] = Math.floor(Math.random() * Math.floor(barListSize)) )
+    barList.forEach((number, index) => barList[index] = Math.floor(Math.random() * Math.floor(randomRange)) )
     const min = Math.min(...barList);
     const max = Math.max(...barList);
     setMinSize(min);
@@ -32,13 +32,15 @@ const BarContainer = () => {
     const totalSize = distanceFromMin/range;
     return totalSize;
   }
+
   return (
     <Container>
       {
         barList.map((bar, index) => {
           const height = calculateBarSize(minSize, maxSize, bar)
+          
           return (
-            <Bar height={height} key={index}/>
+            <Bar height={height} barListSize={barListSize} key={index} size={bar}/>
           )
         })
       }
